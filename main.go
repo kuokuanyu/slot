@@ -16,7 +16,7 @@ func main() {
 	// }
 	// // log.Println(board)
 
-	log.Println("測試顯示牌面: 郭冠佑")
+	log.Println("測試顯示牌面: ")
 
 	// 顯示盤面（印出來方便查看）
 	for row := 0; row < 3; row++ {
