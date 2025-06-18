@@ -16,7 +16,8 @@ func main() {
 	// }
 	// // log.Println(board)
 
-	log.Println("測試顯示牌面: ")
+	log.Println("測試顯示牌面: 123456")
+	log.Println("測試顯示牌面: 1222222")
 
 	// 顯示盤面（印出來方便查看）
 	for row := 0; row < 3; row++ {
