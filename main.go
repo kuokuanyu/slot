@@ -2,22 +2,30 @@ package main
 
 import (
 	"fmt"
-	"math/rand"
+	"log"
 	"slot/slot"
-	"time"
 )
 
 func main() {
-	rand.Seed(time.Now().UnixNano()) // 每次執行都隨機
+	board := slot.Spin() // 產生盤面
 
-	board := slot.Spin() // 產生轉輪結果
+	// log.Println("測試spin function: ")
 
-	fmt.Println("🎰 Slot 結果：")
-	slot.PrintBoard(board)
+	// for _, b := range board {
+	// 	log.Println(b)
+	// }
+	// // log.Println(board)
 
-	if slot.IsJackpot(board) {
-		fmt.Println("🎉 恭喜你中 JACKPOT！")
-	} else {
-		fmt.Println("😢 很可惜，沒有中獎")
+	log.Println("測試顯示牌面")
+
+	// 顯示盤面（印出來方便查看）
+	for row := 0; row < 3; row++ {
+		for col := 0; col < 5; col++ {
+			fmt.Printf("%4s", board[col][row])
+		}
+		fmt.Println()
 	}
+
+	// win := slot.CalculateWin(board) // 計算分數
+	// fmt.Printf("🎉 Win amount: %d\n", win)
 }
