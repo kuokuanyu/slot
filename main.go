@@ -17,7 +17,6 @@ func main() {
 	// // log.Println(board)
 
 	log.Println("測試顯示牌面: ")
-	log.Println("設定中")
 
 	// 顯示盤面（印出來方便查看）
 	for row := 0; row < 3; row++ {
