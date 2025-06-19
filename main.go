@@ -14,7 +14,7 @@ func main() {
 	// for _, b := range board {
 	// 	log.Println(b)
 	// }
-	// // log.Println(board)
+	// log.Println(board)
 
 	log.Println("測試顯示牌面: ")
 
