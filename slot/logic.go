@@ -1,5 +1,7 @@
 package slot
 
+import "log"
+
 // Paylines 定義玩家獲勝「連線」的規則線條。
 // 定義哪些符號排列位置構成有效連線（可得分）
 // 每一條線由 5 個座標組成 [column, row]
@@ -97,12 +99,12 @@ func CalculateWin(board [][]string, paylines [][][2]int, paytable map[string]map
 					} else if isWildMatch && symbol == wildSymbol {
 						// 如果第一格是wild，且現在也是wild，則繼續視為連線
 						// 這樣可以允許連線中有多個wild
-					} else if !isWildMatch && symbol != firstSymbol {
-						// 如果第一格不是wild，但現在符號不同於firstSymbol，則中斷連線計算
-						break
 					} else if !isWildMatch && symbol == wildSymbol {
 						// 如果第一格不是wild，但現在是wild，則視為連線
 						isWildMatch = true
+					} else if !isWildMatch && symbol != firstSymbol {
+						// 如果第一格不是wild，但現在符號不同於firstSymbol，則中斷連線計算
+						break
 					}
 				} else {
 					// 如果符號不相同，則中斷連線計算
@@ -113,6 +115,8 @@ func CalculateWin(board [][]string, paylines [][][2]int, paytable map[string]map
 
 		// 最少連線3個符號才有獎金
 		if matchCount >= 3 {
+			log.Println("matchCount: ", matchCount)
+
 			// 從 paytable 取分數
 			scoreMap, ok := paytable[firstSymbol] // firstSymbol 是連線的符號
 

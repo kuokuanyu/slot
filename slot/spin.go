@@ -2,13 +2,12 @@ package slot
 
 import (
 	"math/rand"
-	"time"
 )
 
 // init：初始化亂數種子（確保每次執行結果都不同）
-func init() {
-	rand.Seed(time.Now().UnixNano())
-}
+// func init() {
+// 	rand.Seed(time.Now().UnixNano())
+// }
 
 // Spin 函式會隨機選取每個轉輪上的 3 個連續符號，組成一個 5x3 的遊戲盤面
 func Spin() [][]string {
