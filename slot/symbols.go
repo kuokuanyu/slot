@@ -5,6 +5,7 @@ package slot
 // 仍保留「連續三格抽出」的邏輯（真實 slot 大多使用）
 // 通常為 30～100 個 symbol。
 // 有些大型機種甚至會到 200 個 symbol，因為這樣可以精細控制中獎機率（Hit Rate）與賠率分佈。
+// 每個 Reel 長度不同（48～63 個符號），模擬真實 slot 輪帶長度。
 // 更貼近實際場景
 var Reels = [][]string{
 	// Reel 1 - 52 個符號
@@ -20,6 +21,7 @@ var Reels = [][]string{
 	 "Wild", "Q", "J", "Scatter", "A", "K", "10", "9", "Wild", "Q", "A", "J", "10", "K", "Q", "9", "J", "Scatter"},
 
 	// Reel 3 - 48 個符號（中間轉輪較短）
+	// Reel 3 較短，用來控制中間中獎機率，適合放特殊符號多一些。
 	{"10", "9", "K", "Q", "A", "Scatter", "Wild", "J", "A", "10", "Q", "Wild",
 	 "9", "J", "K", "Q", "Scatter", "A", "Wild", "K", "J", "Q", "10", "9",
 	 "Scatter", "K", "A", "J", "Q", "10", "Wild", "9", "K", "J", "Q", "A",
@@ -33,6 +35,7 @@ var Reels = [][]string{
 	 "10", "J", "Q", "A", "K", "Wild", "9", "Scatter"},
 
 	// Reel 5 - 63 個符號（最長）
+	// Reel 5 較長，讓右邊中線的機率更低或具控制性。
 	{"Wild", "A", "Q", "K", "J", "Scatter", "10", "9", "Wild", "Q", "A", "J", "K", "Scatter",
 	 "9", "10", "K", "Wild", "J", "Q", "10", "9", "A", "K", "Wild", "Q", "J", "10",
 	 "Scatter", "A", "K", "9", "Q", "J", "Wild", "10", "A", "Q", "K", "Scatter", "J", "9",
