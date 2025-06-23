@@ -1,7 +1,5 @@
 package slot
 
-import "log"
-
 // Paylines 定義玩家獲勝「連線」的規則線條。
 // 定義哪些符號排列位置構成有效連線（可得分）
 // 每一條線由 5 個座標組成 [column, row]
@@ -115,7 +113,7 @@ func CalculateWin(board [][]string, paylines [][][2]int, paytable map[string]map
 
 		// 最少連線3個符號才有獎金
 		if matchCount >= 3 {
-			log.Println("matchCount: ", matchCount)
+			// log.Println("matchCount: ", matchCount)
 
 			// 從 paytable 取分數
 			scoreMap, ok := paytable[firstSymbol] // firstSymbol 是連線的符號
