@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .             # Dockerfile 所在路徑
+    container_name: slot-app
+    ports:
+      - "8080:8080"            # 本機 8080 對映容器內 8080 port
+    restart: unless-stopped
+    env_file:
+      - .env
+
