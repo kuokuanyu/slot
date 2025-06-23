@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"log"
 	"os"
 	"slot/slot"
 
@@ -10,12 +9,24 @@ import (
 	"github.com/joho/godotenv"
 )
 
+// build容器: docker build -t my-slot-app .
+// 啟動容器: docker run --name slot-container  --env-file .env -p 8080:8080 my-slot-app
+// 停止容器: docker stop slot-container
+// 移除容器: docker rm slot-container
+func init() {
+	// 本地開發時才載入 .env
+	_ = godotenv.Load(".env")
+}
+
 func main() {
+	// godotenv.Load(".env") 這段程式碼是去「讀 container 裡的 .env 檔案」！
+	// 但 container 裡面並沒有 .env 檔案可讀（預設不會複製過去），所以 Load 就報錯了。
+
 	// 載入 .env
-	err := godotenv.Load(".env")
-	if err != nil {
-		log.Fatal("Error loading .env file")
-	}
+	// err := godotenv.Load(".env")
+	// if err != nil {
+	// 	log.Fatal("Error loading .env file")
+	// }
 
 	port := os.Getenv("PORT")
 	// log.Println("印出env中的PORT:", port)
