@@ -33,3 +33,4 @@ jobs:
       run: |
         cd slot                   # 切換到 slot 資料夾
         go test -v ./...          # 執行該目錄底下所有測試，-v 顯示詳細執行紀錄
+
