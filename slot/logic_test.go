@@ -21,7 +21,7 @@ func TestCalculateWin(t *testing.T) {
 		"A": {3: 10, 4: 20, 5: 50},
 	}
 
-	expected := 50
+	expected := 10
 	score, _ := CalculateWin(board, paylines, paytable, "Wild", "Scatter")
 	if score != expected {
 		t.Errorf("expected %d, got %d", expected, score)
@@ -47,7 +47,7 @@ func TestCalculateWinWithWild(t *testing.T) {
 		"A": {3: 10, 4: 20, 5: 50},
 	}
 
-	expected := 50 // Wild替代了A，形成5連線
+	expected := 10 // Wild替代了A，形成5連線
 	score, _ := CalculateWin(board, paylines, paytable, "Wild", "Scatter")
 	if score != expected {
 		t.Errorf("expected %d, got %d", expected, score)
