@@ -10,7 +10,7 @@ import (
 )
 
 // build容器: docker build -t my-slot-app .
-// 啟動容器: docker run --name slot-container  --env-file .env -p 8080:8080 my-slot-app
+// 啟動容器: docker run -d --name slot-container  --env-file .env -p 8080:8080 my-slot-app
 // 停止容器: docker stop slot-container
 // 移除容器: docker rm slot-container
 func init() {

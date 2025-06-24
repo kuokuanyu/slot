@@ -1,0 +1,35 @@
+name: Go CI
+
+on:
+  push:
+    branches: ['*']            # 監聽所有分支的 push 事件
+  pull_request:
+    branches: ['*']            # 監聽所有分支的 pull request 事件
+
+jobs:
+  test:
+    runs-on: ubuntu-latest   # 使用最新的 Ubuntu 作為執行環境
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3  # 取得目前 repository 的程式碼
+
+    - name: Setup Go
+      uses: actions/setup-go@v4  # 安裝指定版本的 Go 環境
+      with:
+        go-version: '1.24'       # 設定 Go 版本，依你的專案版本調整
+
+    - name: Cache Go modules
+      uses: actions/cache@v3     # 快取 go module 下載的依賴，加速執行速度
+      with:
+        path: |
+          ~/.cache/go-build
+          ~/go/pkg/mod
+        key: ${{ runner.os }}-go-${{ hashFiles('**/go.sum') }}
+        restore-keys: |
+          ${{ runner.os }}-go-
+
+    - name: Run tests in slot folder
+      run: |
+        cd slot                   # 切換到 slot 資料夾
+        go test -v ./...          # 執行該目錄底下所有測試，-v 顯示詳細執行紀錄
